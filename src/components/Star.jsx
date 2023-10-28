@@ -2,12 +2,13 @@ import PropTypes from "prop-types";
 
 import { FaStar } from "react-icons/fa";
 
-const Star = ({ selected = false }) => (
-  <FaStar color={selected ? "red" : "grey"} />
+const Star = ({ selected = false, onSelect}) => (
+  <FaStar color={selected ? "red" : "grey"} onClick={onSelect} />
 );
 
 Star.propTypes = {
-  selected: PropTypes.bool,
+    selected: PropTypes.bool,
+    onSelect: PropTypes.func
 };
 
 export default Star;
