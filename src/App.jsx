@@ -5,6 +5,7 @@ function App() {
   return (
     <>
       <h1>Star Rating Component</h1>
+      {/* we can pass a style to it */}
       <StarRating style={{backgroundColor: 'lightgrey'}} />
     </>
   )

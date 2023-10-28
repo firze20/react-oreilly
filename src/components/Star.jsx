@@ -8,7 +8,7 @@ const Star = ({ selected = false, onSelect}) => (
 
 Star.propTypes = {
     selected: PropTypes.bool,
-    onSelect: PropTypes.func
+    onSelect: PropTypes.func.isRequired
 };
 
 export default Star;
