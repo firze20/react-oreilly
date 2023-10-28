@@ -1,26 +1,42 @@
+// Importing necessary dependencies from React and prop-types
 import { useState } from "react";
 import PropTypes from "prop-types";
+
+// Importing the Star component from a local file
 import Star from "./Star";
 
-const createArray = (length) => [...Array(length)]; //create Array function can be moved to utils
+// Utility function to create an array of a given length
+// This can be moved to a separate utils file if desired
+const createArray = (length) => [...Array(length)];
 
+// Defining the StarRating functional component
+
+//if not specified totalStars default is 5
 export default function StarRating({ totalStars = 5 }) {
-    const [selectedStars, setSelectedStars] = useState(0);
+  // Using the state hook to manage the selectedStars state
+  const [selectedStars, setSelectedStars] = useState(0);
 
-    return (
-        <>
-            {createArray(totalStars).map((n, i) => (
-                <Star
-                    key={i}
-                    selected={selectedStars > i}
-                    onSelect={() => setSelectedStars(i +1)}
-                />
-            ))}
-            <p>{selectedStars} of { totalStars }</p>
-        </>
-    )
+  // Rendering the Star components based on the totalStars prop
+  return (
+    <>
+      {/* Mapping over the array created by createArray and rendering Star components */}
+      {createArray(totalStars).map((n, i) => (
+        <Star
+          key={i} // Using the index as the key (consider using a more unique key if available)
+          selected={selectedStars > i} // Passing a boolean prop to Star component based on the selection
+          onSelect={() => setSelectedStars(i + 1)} // Callback function to update the selectedStars state
+        />
+      ))}
+
+      {/* Displaying the number of selected stars out of the total stars */}
+      <p>
+        {selectedStars} of {totalStars}
+      </p>
+    </>
+  );
 }
 
+// Prop type validation for the totalStars prop
 StarRating.propTypes = {
-    totalStars: PropTypes.number
-}
+  totalStars: PropTypes.number,
+};
