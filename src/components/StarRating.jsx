@@ -12,13 +12,13 @@ const createArray = (length) => [...Array(length)];
 // Defining the StarRating functional component
 
 //if not specified totalStars default is 5
-export default function StarRating({ totalStars = 5 }) {
+export default function StarRating({ style = {}, totalStars = 5 }) {
   // Using the state hook to manage the selectedStars state
   const [selectedStars, setSelectedStars] = useState(0);
 
   // Rendering the Star components based on the totalStars prop
   return (
-    <>
+    <div style={{padding: "5px", ...style}}>
       {/* Mapping over the array created by createArray and rendering Star components */}
       {createArray(totalStars).map((n, i) => (
         <Star
@@ -32,11 +32,12 @@ export default function StarRating({ totalStars = 5 }) {
       <p>
         {selectedStars} of {totalStars}
       </p>
-    </>
+    </div>
   );
 }
 
 // Prop type validation for the totalStars prop
 StarRating.propTypes = {
-  totalStars: PropTypes.number,
+    style: PropTypes.object,
+    totalStars: PropTypes.number,
 };

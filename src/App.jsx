@@ -5,7 +5,7 @@ function App() {
   return (
     <>
       <h1>Star Rating Component</h1>
-      <StarRating />
+      <StarRating style={{backgroundColor: 'lightgrey'}} />
     </>
   )
 }
